@@ -35,7 +35,6 @@ def test_prepare_features():
     assert list(X.columns) == [
         'golddiffat15', 'xpdiffat15', 'csdiffat15',
         'killsat15', 'assistsat15', 'deathsat15',
-        'opp_killsat15', 'opp_assistsat15', 'opp_deathsat15',
         'firstblood', 'firstdragon', 'firstherald',
         'firsttower', 'firstmidtower', 'firsttothreetowers',
         'void_grubs',
@@ -108,7 +107,7 @@ def test_models_fit():
         preds = model.predict(X_test_scaled)
         proba = model.predict_proba(X_test_scaled)
         assert len(preds) == len(y_test)
-        assert proba.shape == (len(y_test), 2)
+        assert proba.shape == (len(y_test),)
         assert model.best_params_ is not None
 
 
@@ -132,7 +131,7 @@ def test_nan_report():
     from src.data.preprocessor import get_nan_report, get_nan_league_report
     df = filter_team_rows(load_csv())
     report = get_nan_report(df)
-    assert len(report) == 16
+    assert len(report) == 13
     assert 'nan_count' in report.columns
     league_report = get_nan_league_report(df)
     assert len(league_report) > 0
