@@ -9,7 +9,6 @@ EXPERIMENT_NAME = "early_game_winner_prediction"
 EARLY_FEATURES = [
     'golddiffat15', 'xpdiffat15', 'csdiffat15',
     'killsat15', 'assistsat15', 'deathsat15',
-    'opp_killsat15', 'opp_assistsat15', 'opp_deathsat15',
     'firstblood', 'firstdragon', 'firstherald',
     'firsttower', 'firstmidtower', 'firsttothreetowers',
     'void_grubs',

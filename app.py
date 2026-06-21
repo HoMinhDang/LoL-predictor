@@ -130,12 +130,12 @@ def render_predict_tab(available_models, scaler, metadata):
                 st.markdown("<h2 style='color:red;text-align:center'>LOSS 💀</h2>",
                             unsafe_allow_html=True)
         with col_b:
-            confidence = proba[pred] * 100
-            st.metric("Confidence", f"{confidence:.1f}%")
+            confidence = proba if pred == 1 else (1 - proba)
+            st.metric("Confidence", f"{confidence*100:.1f}%")
 
         chart_df = pd.DataFrame({
             'Outcome': ['Win', 'Loss'],
-            'Probability': [proba[1], proba[0]],
+            'Probability': [proba, 1 - proba],     # ✅ proba = class 1 (Win), 1-proba = Loss
         })
         st.bar_chart(chart_df.set_index('Outcome'))
 
