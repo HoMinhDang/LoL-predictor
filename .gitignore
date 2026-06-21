@@ -1,0 +1,11 @@
+.venv/
+__pycache__/
+*.pyc
+mlruns/
+mlruns.db
+models_saved/
+reports/
+.pytest_cache/
+*.egg-info/
+debug_align.py
+.env
